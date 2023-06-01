@@ -122,27 +122,35 @@ Step 6 – Testing PHP with Nginx
 
 To validate that Nginx can correctly hand .php files off to my PHP processor is by creating a test PHP file in the root web document:
 
-Creating a file called info.php: $ `nano /var/www/projectLEMP/info.php`
+Creating a file called info.php:  `nano /var/www/projectLEMP/info.php`
+
 Adding the following script:
-``
-<?php
-phpinfo();
-``
-To access this page in the web browser: `http://Public_IP_address/info.php`
+
+
+
+
+
+To access this page in the web browser: 
+`http://Public_IP_address/info.php`
+
+
 
 ![image](https://github.com/Iyohasylvester/darey.io-projects/assets/133134564/d8aae999-23c2-4a3f-829f-443ed82cf77b)
 
 
 Removing the file since it contain seneitive information about my PHP environment:  `sudo rm /var/www/your_domain/info.php`
 
+
 Step 7 — Retrieving data from MySQL database with PHP
 
 Next is creating a simple ‘To do list’ to test how data is retrieved from the MySQL database with PHP:
 
 First is connecting to MySQL console:  `sudo mysql`
+
 Creating a new database: mysql> `CREATE DATABASE example_database;`
+
 Creating a new user and granting him full privileges on the database using mysql_native_password as default authentication method: 
-mysql>  `CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';` 
+mysql>  ``CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';`` 
 mysql> `GRANT ALL ON example_database.* TO 'example_user'@'%';`
 
 Exiting from MySQL console: mysql> exit
@@ -150,8 +158,10 @@ Exiting from MySQL console: mysql> exit
 ![image](https://github.com/Iyohasylvester/darey.io-projects/assets/133134564/ae96f69c-f9ab-461b-bae6-6400ce4c6baf)
 
 
-Testing if the new user has the proper permissions by logging in to the MySQL console again using the custom user credentials: `mysql -u example_user -p
-To see the database created: mysql> SHOW DATABASES;`
+Testing if the new user has the proper permissions by logging in to the MySQL console again using the custom user credentials: 
+`mysql -u example_user -p`
+
+To see the database created: 
 mysql> ` SHOW DATABASES;`
 
 
@@ -170,11 +180,15 @@ mysql>     CREATE TABLE example_database.todo_list (
   ``
   Inserting a few rows of content in the test table: 
   mysql> `INSERT INTO example_database.todo_list (content) VALUES ("My first important item");`
+
 To confirm that the data was successfully created: 
 mysql>  `SELECT * FROM example_database.todo_list;`
+
 Exit the MySQL console: mysql> exit
+
 Creating a new PHP file called todo_list.php in my custom web root directory and creating a PHP script that will connect to MySQL and query for my content: 
 `nano /var/www/projectLEMP/todo_list.php`
+
 Adding the following PHP script:
 
 ``<?php
@@ -197,6 +211,7 @@ try {
 ``
 
 To access this page in my web browser is by visiting my public IP address followed by /todo_list.php `http://<Public_domain_or_IP>/todo_list.php`
+
 
 
 ![image](https://github.com/Iyohasylvester/darey.io-projects/assets/133134564/34959e97-f1db-4f9b-a697-bd460d5f32d1)
